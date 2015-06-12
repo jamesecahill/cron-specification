@@ -15,6 +15,13 @@ See tests for example usages.
 └───────────────────────── min (0 - 59)
 ```
 
+Example:
+
+```
+CronSpecification spec = new CronSpecification("* * * * *");
+spec.isTargeted(new Date());
+```
+
 ### Pre-reqs
 
  * Java 1.8
