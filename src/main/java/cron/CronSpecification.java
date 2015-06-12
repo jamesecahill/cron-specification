@@ -38,6 +38,8 @@ public class CronSpecification {
     private Set<Integer> monthsOfYear;
     private Set<Integer> daysOfWeek;
 
+    private Calendar cal = Calendar.getInstance();
+
     /**
      * Constuct a cron spec based on the given columnular specification.
      */
@@ -62,7 +64,6 @@ public class CronSpecification {
      * execute its goal for the given date and time?
      */
     public boolean isTargeted(Date date) {
-        Calendar cal = Calendar.getInstance();
         cal.setTime(date);
         return (minutes.size() == 0 || minutes.contains(cal.get(Calendar.MINUTE))) &&
                 (hours.size() == 0 || hours.contains(cal.get(Calendar.HOUR_OF_DAY))) &&
