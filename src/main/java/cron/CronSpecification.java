@@ -32,11 +32,11 @@ import java.util.Set;
  */
 public class CronSpecification {
     //these are used as limits, if empty, assume all should match
-    private Set<Integer> minutes;
-    private Set<Integer> hours;
-    private Set<Integer> daysOfMonth;
-    private Set<Integer> monthsOfYear;
-    private Set<Integer> daysOfWeek;
+    private Set<Integer> minutes = new HashSet<>(0);
+    private Set<Integer> hours = new HashSet<>(0);
+    private Set<Integer> daysOfMonth = new HashSet<>(0);
+    private Set<Integer> monthsOfYear = new HashSet<>(0);
+    private Set<Integer> daysOfWeek = new HashSet<>(0);
 
     private Calendar cal = Calendar.getInstance();
 
@@ -52,11 +52,7 @@ public class CronSpecification {
      * Construct an empty cron spec, assume all times are targeted. Same as * * * * *.
      */
     public CronSpecification() {
-        minutes = new HashSet<>(0);
-        hours = new HashSet<>(0);
-        daysOfMonth = new HashSet<>(0);
-        monthsOfYear = new HashSet<>(0);
-        daysOfWeek = new HashSet<>(0);
+        // nada
     }
 
     /**
@@ -150,6 +146,7 @@ public class CronSpecification {
     }
 
     private void handleNumericTokenSpec(Set<Integer> specSet, String spec) {
+        specSet.clear();
         if (!spec.equals("*")) {
             Range r;
             for (String token : splitSpecToTokens(spec)) {

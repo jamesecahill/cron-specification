@@ -68,4 +68,17 @@ public class CronSpecificationTest {
     public void testUpperLowerIllegalArgLongWay(){
         new CronSpecification("* * * * fri-mon");
     }
+
+    @Test
+    public void testChangingSpec() {
+        CronSpecification spec = new CronSpecification("* 10-15 8,9,10-20 jun *");
+        Assert.assertTrue(spec.isTargeted(SUNDAY_JUNE_14_2015_15_19_GMT));
+        Assert.assertTrue(spec.isTargeted(FRIDAY_JUNE_12_2015_15_19_GMT));
+        spec.setSpecification("* 10-15 8,9,10-20 jun fri");
+        Assert.assertFalse(spec.isTargeted(SUNDAY_JUNE_14_2015_15_19_GMT));
+        Assert.assertTrue(spec.isTargeted(FRIDAY_JUNE_12_2015_15_19_GMT));
+        spec.setDaysOfWeek("*");
+        Assert.assertTrue(spec.isTargeted(SUNDAY_JUNE_14_2015_15_19_GMT));
+        Assert.assertTrue(spec.isTargeted(FRIDAY_JUNE_12_2015_15_19_GMT));
+    }
 }
