@@ -1,9 +1,11 @@
-package cron;
+package com.bleept.cron;
 
 import java.util.Date;
 
 import org.junit.Assert;
 import org.junit.Test;
+
+import com.bleept.cron.CronSpecification;
 
 public class CronSpecificationTest {
     private static final Long FRIDAY_JUNE_12_2015_15_19_GMT_LONG = 1434122346000L;

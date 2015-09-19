@@ -1,4 +1,4 @@
-package cron;
+package com.bleept.cron;
 
 import java.util.Calendar;
 import java.util.Date;
